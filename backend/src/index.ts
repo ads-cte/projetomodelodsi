@@ -19,6 +19,8 @@ import cors from 'cors';
 // Importa dotenv para carregar variáveis de ambiente do arquivo .env
 import dotenv from 'dotenv';
 
+import apiRoutes from './routes/api.routes'; // Importa as rotas da API
+
 // Carrega as variáveis de ambiente do arquivo .env
 dotenv.config();
 
@@ -44,30 +46,8 @@ app.use(express.json());
 // ============================================================================
 // ROTAS
 // ============================================================================
+app.use('/api', apiRoutes); // Usa as rotas definidas em api.routes.ts para o caminho /api
 
-/**
- * GET /api/health
- * Rota de verificação de status do servidor
- * Retorna status 200 com mensagem e timestamp
- */
-app.get('/api/health', (req: Request, res: Response) => {
-  res.json({
-    status: 'OK',
-    message: 'Backend is running',
-    timestamp: new Date().toISOString()
-  });
-});
-
-/**
- * GET /api/hello
- * Rota simples de boas-vindas
- * Usada pelo frontend para testar a conexão com o backend
- */
-app.get('/api/hello', (req: Request, res: Response) => {
-  res.json({
-    message: 'Hello from Express Backend!'
-  });
-});
 
 // ============================================================================
 // MIDDLEWARE DE TRATAMENTO DE ERROS
