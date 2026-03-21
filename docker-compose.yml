@@ -3,7 +3,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: projetoaccte-backend
+    container_name: projetoaccte-backend-modelo
     ports:
       - "3001:3001"
     environment:
