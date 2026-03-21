@@ -20,7 +20,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: projetoaccte-frontend
+    container_name: projetoaccte-frontend-modelo
     ports:
       - "3000:3000"
     environment:
