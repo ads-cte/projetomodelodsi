@@ -11,6 +11,7 @@
 // ============================================================================
 // Importa o framework Express e seus tipos TypeScript
 import express, { Express, Request, Response } from 'express';
+import sequelize from './config/database';
 
 // Importa o middleware CORS (Cross-Origin Resource Sharing)
 // Permite que requisições de outros domínios acessem nosso servidor
@@ -75,6 +76,18 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
  * Inicia o servidor na porta especificada
  * Exibe mensagem de sucesso no console quando o servidor está rodando
  */
-app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
-});
+const bootstrap = async () => {
+  try {
+    await sequelize.authenticate();
+    await sequelize.sync(); // Cria as tabelas automaticamente
+    console.log('✅ Conectado ao MySQL via Docker!');
+
+    app.listen(port, () => {
+      console.log(`[server]: Rodando em http://localhost:${port}`);
+    });
+  } catch (err) {
+    console.error('❌ Falha ao iniciar:', err);
+  }
+};
+
+bootstrap();

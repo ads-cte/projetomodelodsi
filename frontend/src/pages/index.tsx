@@ -111,11 +111,11 @@ export default function Home() {
     <div style={homeStyles.container}>
       <main style={homeStyles.main}>
         {/* Título com ícone e gradiente */}
-        <h1 style={homeStyles.title}>🚀 Next.js + Express + Docker</h1>
+        <h1 style={homeStyles.title}>🚀 Next.js + Express + Docker Teste</h1>
 
         {/* Card mostrando status do frontend */}
         <div style={homeStyles.card}>
-          <h2>Frontend Status</h2>
+          <h2>Frontend Status teste</h2>
           <p>✅ Next.js is running</p>
         </div>
 
